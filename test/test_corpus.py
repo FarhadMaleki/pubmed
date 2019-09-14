@@ -3,6 +3,7 @@
 '''
 import json
 import unittest
+import collections
 from pub.corpus import Corpus
 
 
@@ -22,3 +23,7 @@ class TestCorpus(unittest.TestCase):
     def test_collect_articles(self):
         corpus = Corpus(self.corpus_file_address, self.config)
         self.assertListEqual(corpus.articles, self.corpus_articles)
+
+    def test__iter__(self):
+        corpus = Corpus(self.corpus_file_address, self.config)
+        self.assertTrue(isinstance(iter(corpus), collections.Iterator))

@@ -41,3 +41,12 @@ class Corpus:
                 info.append(article.findtext(tag))
             articles.append(info)
         return articles
+
+    def __iter__(self):
+        '''Define an iterator.
+
+        Return:
+            iterator: An iterator object for articles in the Corpus.
+
+        '''
+        return iter(self.articles)
