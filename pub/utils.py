@@ -1,4 +1,4 @@
-'''This module includes utiliy functions.
+'''This module includes utility functions.
 
 '''
 import time

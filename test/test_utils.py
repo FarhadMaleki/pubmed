@@ -12,7 +12,10 @@ class TestUtils(unittest.TestCase):
 
     @unittest.skip('Takes too much time to run')
     def test_downloader(self):
-        logging.basicConfig(filename='pub.log', level=logging.INFO)
+        log_file_address = 'test/pub.log'
+        if os.path.exists(log_file_address):
+            os.remove(log_file_address)
+        logging.basicConfig(filename=log_file_address, level=logging.INFO)
         logger = logging.getLogger(__name__)
         config_file_address = 'test/data/config.json'
         with open(config_file_address) as fin:
