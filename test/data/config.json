@@ -1,0 +1,13 @@
+{
+	"encoding": "utf-8",
+	"articles_path": "PubmedArticle/MedlineCitation",
+	"article_tag": "Article",
+	"PMID": "PMID",
+	"server_address": "ftp.ncbi.nlm.nih.gov",
+	"contents": ["Journal/Title",
+		        "Journal/JournalIssue/PubDate/Year",
+		        "ArticleTitle",
+		        "Abstract/AbstractText"
+		        ],
+	"striped_tags": ["sub", "sup", "bf", "b", "strong", "i", "em", "mark", "small", "del", "ins"] 
+}
