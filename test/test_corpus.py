@@ -27,3 +27,4 @@ class TestCorpus(unittest.TestCase):
     def test__iter__(self):
         corpus = Corpus(self.corpus_file_address, self.config)
         self.assertTrue(isinstance(iter(corpus), collections.Iterator))
+        self.assertListEqual(list(iter(corpus)), corpus.articles)
