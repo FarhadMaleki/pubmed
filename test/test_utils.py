@@ -4,7 +4,6 @@
 import os
 import json
 import glob
-import logging
 import unittest
 from pub import utils
 
@@ -27,15 +26,10 @@ class TestUtils(unittest.TestCase):
             test requires updating the links and their corresponding files.
 
         '''
-        log_file_address = 'test/pub.log'
-        if os.path.exists(log_file_address):
-            os.remove(log_file_address)
-        logging.basicConfig(filename=log_file_address, level=logging.INFO)
-        logger = logging.getLogger(__name__)
         # Make sure that such a link is still available
         file_links = ["pubmed/baseline/pubmed19n0001.xml.gz"]
         dest_dir = 'test/data'
-        utils.downloader(file_links, dest_dir, logger, sleep=2,
+        utils.downloader(file_links, dest_dir, sleep=2,
                          server_address=self.config['server_address'])
         # THe following line must be updated if you update the FTP link.
         dest_address = os.path.join(dest_dir, "pubmed19n0001.xml.gz")
