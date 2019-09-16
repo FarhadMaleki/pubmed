@@ -1,0 +1,2 @@
+pubmed/baseline/pubmed19n0001.xml.gz
+pubmed/baseline/pubmed19n0002.xml.gz
