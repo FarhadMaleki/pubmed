@@ -4,7 +4,8 @@
 import time
 import os.path
 from ftplib import FTP
-
+import multiprocessing as mp
+from pub.corpus import Corpus
 
 
 def downloader(file_links, dest_dir, logger, sleep=2,
@@ -39,3 +40,27 @@ def downloader(file_links, dest_dir, logger, sleep=2,
                 ftp.retrbinary('RETR ' + link, fout.write)
             msg = 'Downloaded to: {}'.format(os.path.join(dest_dir, name))
             logger.info(msg)
+
+
+def corpra(input_addresses, config, num_proc=1):
+    '''Load corpra from several files.
+
+    Args:
+        input_addresses (str): A sequence of PubMed baseline gz (gzipped) file
+            addresses.
+        config (dict):  A dictionary that determines the information
+            being extracted.
+        num_proc (int): A positive integer determining the number of processes
+            used to extract article information from corpra.
+    Yields:
+        A sequence of data items for each article in the PubMed baseline
+            gz (gzipped) files located in the input_addresses. The order of
+            articles in the corpra might not be preserved.
+
+    '''
+    pool = mp.Pool(processes=num_proc)
+    corpra = [pool.apply_async(Corpus, args=(address, config))
+              for address in input_addresses]
+    for corpus in corpra:
+        for article in corpus.get():
+            yield article
