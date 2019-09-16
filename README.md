@@ -21,6 +21,11 @@ To install requirements, the following command can be run.
 ```bash
 make setup
 ```
+Windows users must use the following command instead.
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Running the tests
 
@@ -29,7 +34,11 @@ Regression tests can be run through the following command:
 ```bash
 make regression
 ```
+Windows users must use the following command instead.
 
+```bash
+python regression.py
+```
 ## Adding more tests
 
 New tests should be added as modules where their names start with *`test_`* under the **test** directory.
